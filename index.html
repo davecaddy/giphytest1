@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
+  <body>
+    <img src="#" />
+
+    Search: <input type="text" id="userSearch">
+    <button onclick="click_me()">Click me</button>
+    </form>
+
+        <script>
+
+let theirSearch;
+var newURL;
+
+function click_me()
+          {
+             var theirSearch=document.getElementById("userSearch").value;
+             console.log(theirSearch);
+             let newURL = 'https://api.giphy.com/v1/gifs/translate?api_key=bsIdVILB1ooIZVcPvCkzq4wlBWShigrw&s='+ theirSearch;
+             console.log(newURL);
+           };
+
+
+
+
+
+            const img = document.querySelector('img');
+            fetch(`${newURL}`, {mode: 'cors'})
+              .then(function(response) {
+                return response.json();
+              })
+              .then(function(response) {
+                img.src = response.data.images.original.url;
+              });
+          </script>
+  </body>
+</html>
